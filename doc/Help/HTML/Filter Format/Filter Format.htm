@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Filter Format</Title>
+</HEAD>
+<BODY>
+
+<H3>Filter Format</H3>
+
+<P>The filter tag contains one entire filter, including what
+attributes to look for in an email message, how often to act on a
+matched filter, what to do when you match a message, and what
+statistics have been gathered about how the filter is performing.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="Actions" SRC="../../Images/Filter.gif">
+</P>
+
+<P>It is very important that all of the tags within a <B>Filter</B>
+tag appear in the exact order listed above. The only exception is the
+<B>Frequency</B> tag which is optional.</P>
+
+<H3>Filter Example</H3>
+
+<P>See the examples section of the documentation to see full examples
+of filters. This is just an abbreviated version of a filter.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Filters ...&gt;</FONT>
+<FONT COLOR="DARKGRAY">  &lt;Filter&gt;</FONT>
+<FONT COLOR="DARKGRAY">    ...</FONT>
+<FONT COLOR="DARKGRAY">  &lt;/Filter&gt;</FONT>
+  &lt;Filter Name="Example Filter" Enabled="true"&gt;
+    &lt;Criteria&gt;
+      ...
+    &lt;/Criteria&gt;
+    &lt;Actions&gt;
+      ...
+    &lt;/Actions&gt;
+    &lt;Stats&gt;
+      ...
+    &lt;/Stats&gt;
+  &lt;/Filter&gt;
+<FONT COLOR="DARKGRAY">  &lt;Filter&gt;</FONT>
+<FONT COLOR="DARKGRAY">    ...</FONT>
+<FONT COLOR="DARKGRAY">  &lt;/Filter&gt;</FONT>
+<FONT COLOR="DARKGRAY">&lt;/Filters&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

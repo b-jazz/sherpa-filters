@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Malformed Message-ID Header</Title>
+</HEAD>
+<BODY>
+
+<H3>Malformed Message-ID Header</H3>
+
+<P>One way a spammer tries to hide the mail servers that their spam is
+originating from is to create a bogus Message-ID line. An RFC
+compliant mail server will have a Message-ID header that has some
+unique piece of data, followed by an @ sign and the host that
+generated the email. All of that should be enclosed in angle brackets
+"&lt;&gt;". Several spams that I've seen just leave out the hostname from
+the Message-ID header, making it easy prey to the following
+filter.</P>
+
+<P>The interesting trick here is that since you are looking for a
+character (the '>') in the regular expression, you have to encode it
+so that it will get through the XML conversions. You need to write it
+out as &amp;gt; in order for it to turn into '>' when it gets passed
+to the regular expression engine.</P>
+
+<H3>Message-ID Example</H3>
+
+
+<P><PRE>
+&lt;Filter Name="SPAM: Malformed Message-ID Header" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;Message-ID&lt;/Header&gt;
+      &lt;Value&gt;&amp;gt;&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+
+</BODY>
+</HTML>

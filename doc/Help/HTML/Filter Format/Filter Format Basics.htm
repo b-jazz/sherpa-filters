@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Filter Format Basics</Title>
+</HEAD>
+<BODY>
+
+<H3>Filter Format Basics</H3>
+
+<P>The Sherpa filters are expressed in an XML file. The structure is
+pretty simple. There is some header information, then the single
+&lt;Filters&gt; tag that encloses multiple &lt;Filter&gt; tags.</P>
+
+<P>The filters are examined in order, top to bottom, and the first
+filter that matches the email message performs its actions and then no
+more filters are checked.</P>
+
+<P>Here is the most basic Sherpa filter that you can have.</P>
+
+<P>
+<PRE>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Filters Version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/Program Files/IH8SPAM/Sherpa Filters/SherpaFilterSchema.xsd"&gt;
+&lt;/Filters&gt;
+</PRE>
+</P>
+
+<P>The filter format version that this version of Sherpa understands
+is anything up to and including version 1. Future versions of Sherpa
+might understand later versions of the filter and will be able to
+auto-upgrade older versions to the current version.</P>
+
+<P>If for some reason, you install Sherpa outside of the standard
+location, or on a different drive letter, make sure you change the URL
+listed in the second line.</P>
+
+</BODY>
+</HTML>

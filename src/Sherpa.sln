@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sherpa", "Sherpa.csproj", "{C8989E53-8920-4BAF-A7F3-1FC80248E63D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Sherpa Installer", "..\Sherpa Installer\Sherpa Installer.vdproj", "{593C5AB8-B955-417B-8553-8E10756373BC}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{C8989E53-8920-4BAF-A7F3-1FC80248E63D}.Debug.ActiveCfg = Debug|.NET
+		{C8989E53-8920-4BAF-A7F3-1FC80248E63D}.Debug.Build.0 = Debug|.NET
+		{C8989E53-8920-4BAF-A7F3-1FC80248E63D}.Release.ActiveCfg = Release|.NET
+		{C8989E53-8920-4BAF-A7F3-1FC80248E63D}.Release.Build.0 = Release|.NET
+		{593C5AB8-B955-417B-8553-8E10756373BC}.Debug.ActiveCfg = Debug
+		{593C5AB8-B955-417B-8553-8E10756373BC}.Release.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

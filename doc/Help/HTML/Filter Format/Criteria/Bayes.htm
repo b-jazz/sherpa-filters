@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>Bayes</Title>
+</HEAD>
+<BODY>
+
+<H3>Bayes</H3>
+
+<P>A powerful filter that analyzes a set of normal email and a set of
+spam email to come up with a list of words and the probabilities that
+those words belong to a spam message.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="Bayes" SRC="../../../Images/Bayes.gif">
+</P>
+
+<P>To configure a filter that makes use of Bayes filtering is
+trivial. The Bayes filter simply returns a number between 0 and 100
+that indicates the probability that a message is spam. Any message
+that has a higher probability than you specify in the <B>Value</B>
+will result in the criteria matching.</P>
+
+<P>You can play around with the value that you use, but a recommended
+value is somewhere between 90 and 97.</P>
+
+<H3>Bayes Example</H3>
+
+<P>This example uses a fairly aggressive value for defining what a
+spam message is.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;Bayes&gt;
+    &lt;Value&gt;90&lt;/Value&gt;
+  &lt;/Bayes&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

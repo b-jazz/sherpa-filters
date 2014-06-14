@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>ContactMatch</Title>
+</HEAD>
+<BODY>
+
+<H3>ContactMatch</H3>
+
+<P>Use the ContactMatch criteria to match an email address in the
+email to all of the addresses listed in your Contacts.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="ContactMatch" SRC="../../../Images/ContactMatch.gif">
+</P>
+
+<P>You can specify one <B>Header</B> field. Valid fields are
+<B>From</B>, <B>To</B>, <B>Cc</B>, and <B>ToCc</B>. The ToCc header is
+just a combination of the addresses in the To: and Cc: headers.</P>
+
+<P>The <B>ContactsName</B> is the path to your Contacts database. The default
+path in Outlook is just <B>Contacts</B>. Contrary to the graphic
+above, you cannot currently specify more than just the default
+Contacts. <I>A later version of Sherpa will allow this.</I></P>
+
+<H3>ContactMatch Example</H3>
+
+<P>This is a pretty simple example that shows you how to see if email
+messages are from someone that you have in your Contacts database.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;ContactMatch&gt;
+    &lt;Header&gt;From&lt;/Header&gt;
+    &lt;ContactsName&gt;Contacts&lt;/ContactsName&gt;
+  &lt;/ContactMatch&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+<P>This is a more interesting rule since we are seeing if the email is
+sent <I>to</I> someone you know. This is great in the situation where
+a friend of yours sends mail to you an a couple of other friends (that
+you don't know). You'll get his mail with the example above, but if
+one of his friends does a reply-all, the example below will match
+since it is to someone (your friend) that is in your Contact.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;ContactMatch&gt;
+    &lt;Header&gt;ToCc&lt;/Header&gt;
+    &lt;ContactsName&gt;Contacts&lt;/ContactsName&gt;
+  &lt;/ContactMatch&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+
+</BODY>
+</HTML>

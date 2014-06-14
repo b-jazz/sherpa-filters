@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>Count</Title>
+</HEAD>
+<BODY>
+
+<H3>Count</H3>
+
+<P>Specify how many message to ignore before accepting another message
+matching the give criteria.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="Not" SRC="../../../Images/Frequency.gif">
+</P>
+
+<P>The <B>Frequency</B> tag is optional when writing filters, but when it
+exists, it must come after the <B>Criteria</B> tag and before the
+<B>Actions</B> tag.</P>
+
+<P>Frequency can help you avoid some high traffic email
+messages that might come into your mailbox. For example, maybe you
+have a script that runs every five minutes and emails you if something
+fails. Well, you wake up the next morning and have about a hundred
+email messages waiting for you saying the exact same thing when your
+script failed five minutes after you left work the night before.</P>
+
+<H3>Count Example</H3>
+
+<P>You might only want to receive every tenth message, so you'll write
+a filter like the one below</P>
+
+<P><PRE>
+<FONT COLOR="DARKGRAY">&lt;Filter Name="Count Example"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;Subject&lt;/Header&gt;
+      &lt;Value&gt;^Script Failure: &lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;</FONT>
+  &lt;Frequency&gt;
+    &lt;Count&gt;10&lt;/Count&gt;
+  &lt;/Frequency&gt;
+<FONT COLOR="DARKGRAY">  &lt;Actions&gt;
+    ...
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    ...
+  &lt;/Stats&gt;
+&lt;/Filter&gt;</FONT>
+
+</PRE></P>
+
+</BODY>
+</HTML>

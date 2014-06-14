@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Habaes Authorized Email</Title>
+</HEAD>
+<BODY>
+
+<H3>Habaes Authorized Email</H3>
+
+<P>This is actually an example of an email that you might want to
+consider as a normal piece of mail. There is a company out there with
+an interesting way to fight spam. Their goal isn't to tell you what a
+spam message is, but it is to tell you when a message isn't a
+spam. You can read all about it at the <A
+HREF="http://www.habeas.com">Habeas</A> website.</H3>
+
+<P>The way to filter out a message that is marked with the Habeas
+trademark is to look for the haiku in the headers. But you really only
+need to look for the one header with the (tm) symbol in it. The
+example below shows you the filter to use.</P>
+
+<H3>Habeas Example</H3>
+
+<P><PRE>
+&lt;Filter Name="IN: Habaes Authorized Email" Enabled="true" Tag="Normal"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;X-Habeas-SWE-3&lt;/Header&gt;
+      &lt;Value&gt;^like Habeas SWE (tm)$&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/In&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+</BODY>
+</HTML>

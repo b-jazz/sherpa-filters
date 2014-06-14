@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>ADV In The Subject Line</Title>
+</HEAD>
+<BODY>
+
+<H3>ADV In The Subject Line</H3>
+
+<P>Some government agency decided that the best way to stop spam was
+to make it a law that you had to put "ADV:" as the first four letters
+of the subject line to make it clear to the receiver that they were
+receiving an advertisement. On one hand, this didn't stop spam, but on
+the other hand, some spammers are following the rule. Although some
+are trying to get cute by putting ADV somewhere else in the subject
+line instead of the start.</P>
+
+<H3>Examples</H3>
+
+<P>Here are three examples of how to write the subject line value to
+look for, depending on how strict you want to be.</P>
+
+<OL>
+<LI>Only look for ADV at the start of the subject line.<BR>
+<PRE>&lt;Value&gt;^ADV&lt;/Value&gt;</PRE></LI>
+
+<LI>Look for ADV surrounded by non-word characters like (ADV), [ADV],
+and the like. Note that we want zero or one non-word characters at the
+start since we still want to catch ADV at the start of the line.<BR>
+<PRE>&lt;Value&gt;\W?ADV\W+&lt;/Value&gt;</PRE></LI>
+
+<LI>Look for ADV anywhere in the subject line. Be careful though, this
+might catch words like advice. <I>The current version of Sherpa forces
+you to use case insensitive searches, but that will change in the next
+minor release.</I><BR>
+<PRE>&lt;Value&gt;ADV&lt;/Value&gt;</PRE></LI>
+</OL>
+
+<H3>Complete Filter Example</H3>
+
+<P><PRE>
+&lt;Filter Name="SPAM: ADV In Subject Line" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;Subject&lt;/Header&gt;
+      &lt;Value&gt;\W?ADV\W+&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+</BODY>
+</HTML>

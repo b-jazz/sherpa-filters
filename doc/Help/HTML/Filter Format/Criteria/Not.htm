@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>Not</Title>
+</HEAD>
+<BODY>
+
+<H3>Not</H3>
+
+<P>If the sub-criteria matches, the overall criteria doesn't match,
+and vice-versa.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="Not" SRC="../../../Images/Not.gif">
+</P>
+
+<P>You can only have one criteria within a <B>Not</B> tag.</P>
+
+<H3>Not Example</H3>
+
+<P>This example will match against an email that doesn't contain a
+<B>To:</B> header. Most legitimate mail servers will generate a To:
+header line but leave it blank when there is nobody on the To:
+line. But some spam programs out there completely remove the To:
+header. I've seen enough spam like this to write a rule for it.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;Not&gt;
+    &lt;HeaderExists&gt;
+      &lt;Header&gt;To&lt;/Header&gt;
+    &lt;/HeaderExists&gt;
+  &lt;/Not&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

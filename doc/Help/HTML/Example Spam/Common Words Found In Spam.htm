@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Common Words Found In Spam</Title>
+</HEAD>
+<BODY>
+
+<H3>Common Words Found In Spam</H3>
+
+<P><I>First off, let me warn you that the words you'll find in this page
+of the documentation are rated 'R'. They are offensive to many, and
+that is why we want to filter them out.</I></P>
+
+<P>Many of the spam message that you'll receive have some very common
+words in them that you just don't find in your normal, day-to-day
+emails. And if you order your filters so that your legitimate email
+from friends and coworkers get filtered first, you won't throw away an
+email message from a colleague that claims, "my last project was raped
+by management."</P>
+
+<H3>Example</H3>
+
+<P><PRE>
+&lt;Filter Name="SPAM: Common Words In Spam" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;BodyMatch&gt;
+      &lt;Value&gt;penis&lt;/Value&gt;
+      &lt;Value&gt;adult&lt;/Value&gt;
+      &lt;Value&gt;rape&lt;/Value&gt;
+      &lt;Value&gt;unsubscribe&lt;/Value&gt;
+      &lt;Value&gt;opt-in&lt;/Value&gt;
+      &lt;Value&gt;special offer&lt;/Value&gt;
+      &lt;Value&gt;money&lt;/Value&gt;
+      &lt;Value&gt;free&lt;/Value&gt;
+      &lt;Value&gt;teens&lt;/Value&gt;
+      &lt;Value&gt;visit&lt;/Value&gt;
+    &lt;/BodyMatch&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+</BODY>
+</HTML>

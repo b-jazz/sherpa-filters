@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>HeaderMatch</Title>
+</HEAD>
+<BODY>
+
+<H3>HeaderMatch</H3>
+
+<P>Check to see if a specific header line has a certain string or
+matches a given regular expression.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="HeaderMatch" SRC="../../../Images/HeaderMatch.gif">
+</P>
+
+<P>The <B>Header</B> tag can specify any possible header. Do not
+include the colon as part of the header name. You can have as many
+<B>Value</B> tags as you'd like. If any one of them matches the given
+header, the criteria will match. Regular expressions are more than
+welcome as part of the Value tags.</P>
+
+<H3>HeaderMatch Example</H3>
+
+<P>The following example shows you how you might catch the mail that
+comes from some well known companies that don't spam you and send you
+mail about orders you've placed.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;HeaderMatch&gt;
+    &lt;Header&gt;From&lt;/Header&gt;
+    &lt;Value&gt;@amazon.com&lt;/Value&gt;
+    &lt;Value&gt;@ebay.com&lt;/Value&gt;
+    &lt;Value&gt;@gap.com&lt;/Value&gt;
+  &lt;/HeaderMatch&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+<P>This example shows you how to look for a specific subject line and
+uses regular expressions. Any message that has a subject line starting
+with "Server Reboot" will match and be filed away somewhere else. The nice thing about this match is
+that if anyone replaces to the message, there will be a "RE: " at the
+start of the subject line which won't match and the message might end
+up in your In box. </P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;HeaderMatch&gt;
+    &lt;Header&gt;Subject&lt;/Header&gt;
+    &lt;Value&gt;^Server Reboot: .*$&lt;/Value&gt;
+  &lt;/HeaderMatch&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Stats</Title>
+</HEAD>
+<BODY>
+
+<H3>Stats</H3>
+
+<P>The stats sections holds some statistics about the filter that
+might be interesting to you. You most likely wouldn't want to edit the
+data in this section unless you wanted to reset the counters for some
+reason.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="Actions" SRC="../../Images/Stats.gif">
+</P>
+
+<P><B>TestCounter</B> is the number of times that this particular
+filter has been tested against email messages.</P>
+
+<P><B>MatchCounter</B> is the number of times that the filter has
+matched an email message.</P>
+
+<P><B>FilterTime</B> is currently unused. In the future, it might hold
+the amount of time that the filter took to process.</P>
+
+<P><B>LastMatchTime</B> shows the date and time when the filter last
+matched against a message. This can be useful in determining if a
+filter ever gets used anymore. If not, you might want to delete it, or
+find some way to change the rule to be more effective.</P>
+
+<H3>Stats Example</H3>
+
+<P>This shows the stats section that you should start with on your
+filters. Go ahead and leave LastMatchTime blank and it will be filled
+in the first time your filter is matched.</P>
+
+<P>
+<PRE>
+&lt;Stats&gt;
+  &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+  &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+  &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+  &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+&lt;/Stats&gt;
+</PRE>
+</P>
+
+</BODY>
+</HTML>

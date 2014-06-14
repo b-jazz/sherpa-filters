@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Filters Version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/Program Files/IH8SPAM/Sherpa Filters/SherpaFilterSchema.xsd">
+  <Filter Name="DELETE: TEMPLATE" Enabled="false">
+    <!-- This filter is just a template. As you can see it is not enabled.
+    Start by copying this filter to make sure you get a good copy of the 
+    order of tags. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>X-Sample-Header</Header>
+        <Value>SampleValue</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Deleted Items/DevNull</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime>
+      </LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="PLACE HOLDER" Enabled="true" Tag="Ignore">
+    <!-- This is a hack. For right now, I don't read anything in "Inbox". I've
+    created "Mailboxes/In" which stores my effective "In" box. There is a strange
+    thing that happens with Outlook though (and this might be because I leave it
+    running on several computers at the same time), but if there are no messages
+    in the Inbox and a new message arrives, it is marked as read. So what I do is
+    have a place holder message in there that will never get filtered into another
+    mailbox. So Outlook never will mark any new incoming mail as Read. It's a hack
+    until I figure out the bug and figure a way around it. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>Subject</Header>
+        <Value>^PLACE HOLDER$</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  <Filter Name="IN: Special BJ Tag" Enabled="true">
+    <!-- I have a simple rule set up that looks for the two letters "BJ" (my initials)
+    in the Subject line. If I'm going to send mail to some complete stranger (Usenet
+    or something) and I want to not filter their email away as spam, I use BJ in my
+    email and their reply will have those letters (hopefully) and I'll filter it into
+    my "In" box. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>Subject</Header>
+        <Value>BJ</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime>
+      </LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="IN: From Known Business Partners" Enabled="true">
+    <!-- Here is a list of companies that I do business with on a regular
+    basis. They don't generate spam (arguably) and I need to make sure I
+    see any email that comes from a random person or system at the company,
+    so anything from those domains goes in my Inbox. This is a good example
+    of the implicit "OR" that is used when listing multiple values in a rule. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>From</Header>
+        <Value>@brightmail.com</Value>
+        <Value>@networksolutions.com</Value>
+        <Value>@netsol.com</Value>
+        <Value>@arin.net</Value>
+        <Value>@verisign.com</Value>
+        <Value>@vmware.com</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="DELETE: Chinese/Japanese Spam" Enabled="true" Tag="Spam">
+    <!-- Regex Example. I'm starting to see a lot of mail with character sets that I don't
+    recognize. One thing that seems in common between these spams is that
+    the Subject line is encoded in such a way that the characters appear to
+    be encoded with equal signs and then a hex value or something. So if I
+    see a bunch of equals, it is a good chance it is foreign and I can't read
+    it anyway. A better Regex would probably be "(.*=){6,}" but I haven't gotten
+    around to making sure that is equivalent to what I have below.  -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>Subject</Header>
+        <Value>.*=.*=.*=.*=.*=.*=</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/Spambox/HEPA/VeryLikely</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="IN: Your Mailbox Is Over Its Size Limit (GT)" Enabled="true">
+    <!-- ValueCompare example. Anyone that has used Exchange is probably very
+    aware of the "over size limit" emails that Exchange sends out when their
+    mailbox is getting full. I usually am very close to the limit and don't
+    want to be bothered when I'm only 97500KB. So I have two filters that work
+    together. This one put any message where my current usage is over 98000KB
+    into my "In" box for me to see, and the next filter throws away all other
+    warning messages. -->
+    <Criteria>
+      <And>
+        <HeaderMatch>
+          <Header>Subject</Header>
+          <Value>Your mailbox is over its size limit</Value>
+        </HeaderMatch>
+        <ValueCompare>
+          <Header>Body:</Header>
+          <Regex>Your mailbox size is (\d+) KB\.</Regex>
+          <Comparison>gt</Comparison>
+          <Value>98000</Value>
+        </ValueCompare>
+      </And>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="DELETE: Your Mailbox Is Over Its Size Limit" Enabled="true">
+    <Criteria>
+      <HeaderMatch>
+        <Header>Subject</Header>
+        <Value>Your mailbox is over its size limit</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Deleted Items/DevNull</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="IN: Output From Cron Command (FREQ)" Enabled="true">
+    <!-- Frequency example. At work, sometimes an automated process running on
+    Unix gets in a bad state and generates messages every 5 minutes. Depending on
+    when things break, I can come in in the morning to a hundred or so identical
+    messages. This filter will only put one cron message every 2 hours into my
+    In box. The next filter throws the rest away. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>Subject</Header>
+        <Value>^Output from "cron" command</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Frequency>
+      <Time>02:00:00</Time>
+    </Frequency>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="DELETE: Output From Cron Command (FREQ)" Enabled="true">
+    <Criteria>
+      <HeaderMatch>
+        <Header>Subject</Header>
+        <Value>^Output from "cron" command</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Deleted Items/DevNull</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime>
+      </LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="DELETE: VI Exited With Documents Open" Enabled="true">
+    <!-- Complex criteria example. Here I want to look at two different pieces
+    of information before I take action on the message. It has to have the 
+    specified text in the body of the message AND it has to be from root. -->
+    <Criteria>
+      <And>
+        <BodyMatch>
+          <Value>A copy of an editor buffer of your file</Value>
+        </BodyMatch>
+        <HeaderMatch>
+          <Header>From</Header>
+          <Value>^root@</Value>
+        </HeaderMatch>
+      </And>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Deleted Items/DevNull</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime>
+      </LastMatchTime>
+    </Stats>
+  </Filter>
+  <!-- ================================================== -->
+  <!-- Here is the big catch all for internal mail.       -->
+  <!-- Put rules before this that you want to zone in on. -->
+  <!-- ================================================== -->
+  <Filter Name="IN: From Employees/Servers" Enabled="true">
+    <!-- Catch all example. This catches the majority of my real mail. If it
+    from someone at my company, put it in my "In" box. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>From</Header>
+        <Value>@acme.com</Value>
+        <Value>@mail.acme.com</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="IN: From A Known Contact" Enabled="true">
+    <!-- ContactMatch example. This criteria rule will check to see if the person
+    the sent the email is listed in my Contacts. The default name of the Contacts
+    in Exchange is "Contacts". If you have a seperate Contact database somewhere
+    else, you should put the full path for the ContactsName value. -->
+    <Criteria>
+      <ContactMatch>
+        <Header>From</Header>
+        <ContactsName>Contacts</ContactsName>
+      </ContactMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="LIST: Known Mailing Lists" Enabled="true">
+    <!-- MailingListMatch example. I have most of my mailing lists filtered
+    into their own folders. If the mail is to camram-spam for example, it
+    gets dropped into Mailboxes/MailingLists/camram-spam@camram.org. -->
+    <Criteria>
+      <MailingListMatch>
+        <Value>camram-spam@camram.org</Value>
+        <Value>outlook-dev@yahoogroups.com</Value>
+      </MailingListMatch>
+    </Criteria>
+    <Actions>
+      <ListMove>
+        <MailingListFolder>Mailboxes/MailingLists</MailingListFolder>
+      </ListMove>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="SPAM: Through Foreign Mail Relays" Enabled="true" Tag="Spam">
+    <!-- RelayDomain example. Anything that travels through a foreign mail server
+    not mentioned as Good below gets tagged as spam. This has turned out to be
+    very affective for me. There is a similar RelayDomain filter that could
+    be used where you just mention the "Bad" top level domains and all others 
+    would not get filtered. -->
+    <Criteria>
+      <RelayDomain>
+        <Good>.com</Good>
+        <Good>.net</Good>
+        <Good>.edu</Good>
+        <Good>.org</Good>
+        <Good>.us</Good>
+        <Good>.uk</Good>
+        <!-- Our au pair is from Poland. -->
+        <Good>.pl</Good>
+      </RelayDomain>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/SpamBox/HEPA</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="IN: To A Known Contact" Enabled="true">
+    <!-- Another ContactMatch example. This might seem a little strange, but it
+    turns out to be very handy. If a friend "Tom" sends mail to me and "Richard"
+    (I don't know Richard) I'll filter it as good since Tom is in my contacts.
+    But if Richard does a Reply-All, I would throw it away since Richard isn't in
+    my Contacts. This way, since he sent it to a friend, I'll filter it as good.
+    The key to this is that you can't have yourself in your Contacts, or this 
+    filter will miss a lot of spam. -->
+    <Criteria>
+      <ContactMatch>
+        <Header>ToCc</Header>
+        <ContactsName>Contacts</ContactsName>
+      </ContactMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="SPAM: Malformed Message-ID Line" Enabled="true" Tag="Spam">
+    <!-- I've noticed a few spammers munge their Message-ID line in an illegal
+    way. I throw away anything that looks like <393r93093jfi@> since it should
+    have <393r93093jfi@legit.domain.com>. Note the use of &gt; in the Value tag. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>Message-ID</Header>
+        <Value>@&gt;</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/SpamBox/HEPA</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime>
+      </LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="SPAM: No To: Header Line" Enabled="true" Tag="Spam">
+    <!-- NOT example. If the To: does NOT exist, take action and toss the
+    message as spam. -->
+    <Criteria>
+      <Not>
+        <HeaderExists>
+          <Header>To</Header>
+        </HeaderExists>
+      </Not>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/SpamBox/HEPA</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+  <Filter Name="SPAM: Never Heard Of This Person" Enabled="true" Tag="Spam">
+    <!-- Here is the one that catches a lot of my spam. If I've never heard 
+    from you before (you're not in my Contacts), then I don't know you and 
+    don't want to hear from you. I keep track of everyone I know and I don't
+    tend to receive email from people I don't know, so this filter works well
+    for me. I do read through the messages that are caught by this filter and
+    make sure there were no false-positives (message tagged as spam that really
+    weren't spam). It might not be ideal for you. Your mileage may vary. -->
+    <Criteria>
+      <Not>
+        <ContactMatch>
+          <Header>From</Header>
+          <ContactsName>Contacts</ContactsName>
+        </ContactMatch>
+      </Not>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/SpamBox/HEPA</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+</Filters>

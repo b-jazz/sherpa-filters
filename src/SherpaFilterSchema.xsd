@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Bryce Jasmer (Microsoft) -->
+<!-- edited with XML Spy v4.2 U (http://www.xmlspy.com) by Bryce Jasmer (Microsoft) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Filters">
+		<xs:annotation>
+			<xs:documentation>Collection of email filters</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Filter" type="FilterType" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:choice>
+			<xs:attribute name="Version" type="xs:positiveInteger" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="HeaderMatchType">
+		<xs:sequence>
+			<xs:element name="Header">
+				<xs:annotation>
+					<xs:documentation>The header to search in</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Value" type="ValueType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The string or regular expression to search for</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="HeaderExistsType">
+		<xs:choice>
+			<xs:element name="Header">
+				<xs:annotation>
+					<xs:documentation>The header to look for</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="BodyMatchType">
+		<xs:choice>
+			<xs:element name="Value" type="ValueType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>The string or regular expression to search for</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="AndType">
+		<xs:choice minOccurs="2" maxOccurs="unbounded">
+			<xs:element name="And" type="AndType"/>
+			<xs:element name="Or" type="OrType"/>
+			<xs:element name="Not" type="NotType"/>
+			<xs:element name="HeaderMatch" type="HeaderMatchType"/>
+			<xs:element name="HeaderExists" type="HeaderExistsType"/>
+			<xs:element name="BodyMatch" type="BodyMatchType"/>
+			<xs:element name="ValueCompare" type="ValueCompareType"/>
+			<xs:element name="ContactMatch" type="ContactMatchType"/>
+			<xs:element name="RelayDomain" type="RelayDomainType"/>
+			<xs:element name="Bayes" type="BayesType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="OrType">
+		<xs:choice minOccurs="2" maxOccurs="unbounded">
+			<xs:element name="And" type="AndType"/>
+			<xs:element name="Or" type="OrType"/>
+			<xs:element name="Not" type="NotType"/>
+			<xs:element name="HeaderMatch" type="HeaderMatchType"/>
+			<xs:element name="BodyMatch" type="BodyMatchType"/>
+			<xs:element name="HeaderExists" type="HeaderExistsType"/>
+			<xs:element name="ValueCompare" type="ValueCompareType"/>
+			<xs:element name="ContactMatch" type="ContactMatchType"/>
+			<xs:element name="RelayDomain" type="RelayDomainType"/>
+			<xs:element name="Bayes" type="BayesType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="NotType">
+		<xs:choice>
+			<xs:element name="And" type="AndType"/>
+			<xs:element name="Or" type="OrType"/>
+			<xs:element name="Not" type="NotType"/>
+			<xs:element name="HeaderMatch" type="HeaderMatchType"/>
+			<xs:element name="HeaderExists" type="HeaderExistsType"/>
+			<xs:element name="BodyMatch" type="BodyMatchType"/>
+			<xs:element name="ValueCompare" type="ValueCompareType"/>
+			<xs:element name="RelayDomain" type="RelayDomainType"/>
+			<xs:element name="ContactMatch" type="ContactMatchType"/>
+			<xs:element name="Bayes" type="BayesType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="CriteriaType">
+		<xs:choice>
+			<xs:element name="And" type="AndType">
+				<xs:annotation>
+					<xs:documentation>True when all of the sub-criteria are True</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Or" type="OrType">
+				<xs:annotation>
+					<xs:documentation>True when any of the sub-criteria are True</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Not" type="NotType">
+				<xs:annotation>
+					<xs:documentation>True when the single sub-criteria is False</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="All">
+				<xs:annotation>
+					<xs:documentation>True for every message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HeaderExists" type="HeaderExistsType">
+				<xs:annotation>
+					<xs:documentation>True when the listed header exists in the message</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="HeaderMatch" type="HeaderMatchType">
+				<xs:annotation>
+					<xs:documentation>True when the specified header contains the string or regular expression given</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BodyMatch" type="BodyMatchType">
+				<xs:annotation>
+					<xs:documentation>True when the body of the email message contains the string or regular expression given</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="MailingListMatch" type="MailingListMatchType">
+				<xs:annotation>
+					<xs:documentation>True when email is to one of your listed mailing lists.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ValueCompare" type="ValueCompareType">
+				<xs:annotation>
+					<xs:documentation>True when a number in the email address, applied to the given expression, is True.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContactMatch" type="ContactMatchType">
+				<xs:annotation>
+					<xs:documentation>True when the message contains an email address that is in your Contacts database</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RelayDomain" type="RelayDomainType">
+				<xs:annotation>
+					<xs:documentation>True when a message travels through (or doesn't travel through) a list of top level domains</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Bayes" type="BayesType">
+				<xs:annotation>
+					<xs:documentation>True when the probabllity that the message is spam is over the given threshold</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ValueCompareType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="Header">
+					<xs:annotation>
+						<xs:documentation>The header to look for numeric data in</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="Body">
+					<xs:annotation>
+						<xs:documentation>Search the body for the numeric data</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="Regex" type="ValueType">
+				<xs:annotation>
+					<xs:documentation>The regular expression that will pull a single number out of the data</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Comparison">
+				<xs:annotation>
+					<xs:documentation>The numeric comparison to apply to the data and the given value</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="gt"/>
+						<xs:enumeration value="lt"/>
+						<xs:enumeration value="eq"/>
+						<xs:enumeration value="ge"/>
+						<xs:enumeration value="le"/>
+						<xs:enumeration value="ne"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Value" type="xs:integer">
+				<xs:annotation>
+					<xs:documentation>The value to compare the data to</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ContactMatchType">
+		<xs:sequence>
+			<xs:element name="Header">
+				<xs:annotation>
+					<xs:documentation>The header to search for email addresses in</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="From"/>
+						<xs:enumeration value="To"/>
+						<xs:enumeration value="Cc"/>
+						<xs:enumeration value="ToCc"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ContactsName">
+				<xs:annotation>
+					<xs:documentation>The name of the address book. It is possible to have multiple address books.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RelayDomainType">
+		<xs:choice>
+			<xs:element name="Good" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of good domains, anything not listed is rejected.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Bad" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>List of bad domains, anything not listed is accepted.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="FilterType">
+		<xs:sequence>
+			<xs:element name="Criteria" type="CriteriaType">
+				<xs:annotation>
+					<xs:documentation>What features of an email message will searched for</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Frequency" type="FrequencyType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Optional: only perform the action at a certain frequency.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Actions" type="ActionType">
+				<xs:annotation>
+					<xs:documentation>Actions to perform when the filter has matched an email message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Stats" type="StatsType">
+				<xs:annotation>
+					<xs:documentation>Common statistics about the filter's use and performance.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Name" type="xs:string" use="required"/>
+		<xs:attribute name="Enabled" type="xs:boolean" use="optional" default="true"/>
+		<xs:attribute name="Continue" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="Tag" use="optional" default="Normal">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Normal"/>
+					<xs:enumeration value="Spam"/>
+					<xs:enumeration value="Ignore"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ActionType">
+		<xs:annotation>
+			<xs:documentation>Actions to perform on emails</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Copy" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Not implemented yet.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PlaySound" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Not implemented yet.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ChangeCursor" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Not implemented yet.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:choice minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>We can only have one destructive action.</xs:documentation>
+				</xs:annotation>
+				<xs:element name="Move">
+					<xs:annotation>
+						<xs:documentation>Move a message into the named folder.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="Destination">
+								<xs:annotation>
+									<xs:documentation>Relative path of destination folder.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ListMove">
+					<xs:annotation>
+						<xs:documentation>Move a message into a folder name that is determined by the name of the mailing list.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:choice>
+							<xs:element name="MailingListFolder">
+								<xs:annotation>
+									<xs:documentation>Relative path of parent directory.</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:choice>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Delete">
+					<xs:annotation>
+						<xs:documentation>Not implemented yet.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="StatsType">
+		<xs:annotation>
+			<xs:documentation>Statistics on filter usage.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="TestCounter">
+				<xs:annotation>
+					<xs:documentation>Number of messages that have been tested.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="MatchCounter">
+				<xs:annotation>
+					<xs:documentation>Number of messages that have matched filter criteria.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="FilterTime">
+				<xs:annotation>
+					<xs:documentation>Clock time the filter has taken to check the criteria.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="LastMatchTime" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Time that this filter last matched against a message.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="FrequencyType">
+		<xs:annotation>
+			<xs:documentation>Only take action on a subset of the matched emails</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="Time">
+				<xs:annotation>
+					<xs:documentation>Wait the specified amount of time before performing the action again.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:pattern value="(\d\.)?\d{2}:\d{2}:\d{2}(\.\d{1,7})?"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Count">
+				<xs:annotation>
+					<xs:documentation>Only perform action every N-th time the filter matches.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:minInclusive value="2"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="MailingListMatchType">
+		<xs:annotation>
+			<xs:documentation>Filter an email into a folder named after its mailing list</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Value" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Full email address of the mailing list</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:minLength value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BayesType">
+		<xs:annotation>
+			<xs:documentation>A powerful type of filter that learns what to consider spam as it goes.</xs:documentation>
+		</xs:annotation>
+		<xs:choice>
+			<xs:element name="Value">
+				<xs:annotation>
+					<xs:documentation>Anything equal to or greater than this value is considered to be spam and triggers a match. Values range from 0 (percent) to 99 (percent).</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:integer">
+						<xs:maxInclusive value="99"/>
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ValueType">
+		<xs:annotation>
+			<xs:documentation>Value that can specify case sensitivity of data</xs:documentation>
+		</xs:annotation>
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="Case" use="optional" default="Insensitive">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Insensitive"/>
+							<xs:enumeration value="Sensitive"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:attribute>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>

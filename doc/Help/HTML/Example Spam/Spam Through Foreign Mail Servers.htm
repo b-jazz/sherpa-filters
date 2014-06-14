@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Spam Through Foreign Mail Servers</Title>
+</HEAD>
+<BODY>
+
+<H3>Spam Through Foreign Mail Servers</H3>
+
+<P>The Internet is very much a global entity these days, and for some
+reason, spammers like to hid out in countries far away from US laws on
+spam (not that any good laws really exist.) Whenever I see an email
+that goes through a foreign mail server, I consider it spam. The
+method works pretty good for me so far. I have a small list of top
+level domains that I allow through and the rest go into the bit
+bucket. To do this, you can use the RelayDomain criteria demonstrated
+below.</P>
+
+<H3>Example</H3>
+
+<P><PRE>
+&lt;Filter Name="SPAM: Foreign Mail Servers" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;RelayDomain&gt;
+      &lt;Good&gt;.com&lt;/Good&gt;
+      &lt;Good&gt;.net&lt;/Good&gt;
+      &lt;Good&gt;.edu&lt;/Good&gt;
+      &lt;Good&gt;.gov&lt;/Good&gt;
+      &lt;Good&gt;.org&lt;/Good&gt;
+      &lt;Good&gt;.us&lt;/Good&gt;
+      &lt;Good&gt;.uk&lt;/Good&gt;
+      &lt;Good&gt;.pl&lt;/Good&gt;
+    &lt;/RelayDomain&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+
+</BODY>
+</HTML>

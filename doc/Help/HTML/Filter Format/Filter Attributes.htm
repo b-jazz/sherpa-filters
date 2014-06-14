@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Filter Attributes</Title>
+</HEAD>
+<BODY>
+
+<H3>Filter Attributes</H3>
+
+<P>Each filter has some attributes that are specified within the
+<B>Filter</B> tag. Some of them are mandatory, others are
+optional.</P>
+
+<P>
+<TABLE COLS=4 BORDER=1>
+<TR>
+<TH>Attribute</TH>
+<TH>Required</TH>
+<TH>Default</TH>
+<TH>Description</TH>
+</TR>
+
+<TR>
+<TD><B>Name</B></TD>
+<TD>Yes</TD>
+<TD><I>none</I></TD>
+<TD>The name you give to the filter. This is used when logging
+information to the event log and will be used later in the user
+interface.</TD>
+</TR>
+
+<TR>
+<TD><B>Enabled</B></TD>
+<TD>No</TD>
+<TD>"true"</TD>
+<TD>Whether or not the filter is currently enabled. If the filter
+isn't enabled, it will be skipped when messages are fed through the
+available filters. Possible values are <B>"true"</B>, <B>"false"</B>,
+<B>1</B>, and <B>0</B>.</TD>
+</TR>
+
+<TR>
+<TD><B>Tag</B></TD>
+<TD>No</TD>
+<TD>"Normal"</TD>
+<TD>Defines how the matching email message should be tagged, whether
+it counts as a spam message, a normal message, or if the message
+doesn't affect the counters. This is mainly used for the statistics
+screen showing you how much spam you've received. In the future, it
+might be used in conjunction with the Bayes filter and improving the
+collections of spam and normal mail. Possible values are
+<B>"Normal"</B>, <B>"Spam"</B>, and <B>"Ignore"</B>.</TD>
+</TR>
+
+</TABLE>
+</P>
+
+<H3>Filter Attribute Examples</H3>
+
+<P>This example shows a filter that is used to catch email addresses
+from people that I know. The tag isn't specified and defaults to
+normal email and will adjust the "normal" counters whenever the filter
+matches.</P>
+
+<P>
+<PRE>
+&lt;Filter Name="IN: Email From Known Contacts" Enabled="true"&gt;
+  <FONT COLOR="DARKGRAY">&lt;Criteria&gt; ... &lt;/Criteria&gt;</FONT>
+  <FONT COLOR="DARKGRAY">&lt;Actions&gt;</FONT>
+    <FONT COLOR="DARKGRAY">&lt;Move&gt;</FONT>
+      <FONT COLOR="DARKGRAY">&lt;Destination&gt;Mailboxes/In&lt;/Destination&gt;</FONT>
+    <FONT COLOR="DARKGRAY">&lt;/Move&gt;</FONT>
+  <FONT COLOR="DARKGRAY">&lt;/Actions&gt;</FONT>
+  <FONT COLOR="DARKGRAY">&lt;Stats&gt; ... &lt;/Stats&gt;</FONT>
+&lt;/Filter&gt;
+</PRE>
+</P>
+
+<P>This is an example of a spam filter. It is enabled by default, but
+the Tag is set to "Spam" to go against the Spam counters.</P>
+
+<P>
+<PRE>
+&lt;Filter Name="SPAM: Email From Known Spammers" Tag="Spam"&gt;
+  <FONT COLOR="DARKGRAY">&lt;Criteria&gt; ... &lt;/Criteria&gt;</FONT>
+  <FONT COLOR="DARKGRAY">&lt;Actions&gt;</FONT>
+    <FONT COLOR="DARKGRAY">&lt;Move&gt;</FONT>
+      <FONT COLOR="DARKGRAY">&lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;</FONT>
+    <FONT COLOR="DARKGRAY">&lt;/Move&gt;</FONT>
+  <FONT COLOR="DARKGRAY">&lt;/Actions&gt;</FONT>
+  <FONT COLOR="DARKGRAY">&lt;Stats&gt; ... &lt;/Stats&gt;</FONT>
+&lt;/Filter&gt;
+</PRE>
+</P>
+
+</BODY>
+</HTML>

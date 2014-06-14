@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>ValueCompare</Title>
+</HEAD>
+<BODY>
+
+<H3>ValueCompare</H3>
+
+<P>Searches the message headers or the message body for a numeric
+value and then does a numerical comparison of that value with the
+given value to determine if the criteria matches.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="ValueCompare" SRC="../../../Images/ValueCompare.gif">
+</P>
+
+<P>The <B>Header</B> tag specifies the header that you are looking for
+data in. The <B>Regex</B> tag specifies a Regular Expression that will
+pull a number out of the data. The <B>Comparison</B> tag specifies
+what type of comparison to perform on the number, and the <B>Value</B>
+tag is the number to compare against.</P>
+
+<P>The <B>Regex</B> tag must have one set of grouping paranthesis in
+order to pull out a number from the data.</P>
+
+<P>The valid comparison operators are <B>gt</B>, <B>lt</B>, <B>eq</B>,
+<B>ge</B>, <B>le</B>, and <B>ne</B> for greater than, less than,
+equal, greater than or equal to, less than or equal to, and not equal
+respectively.</P>
+
+<H3>ValueCompare Example</H3>
+
+<P>This example shows the one reason that the ValueCompare filter was
+written for. In the Exchange world, you are limited to how much space
+that you can use up on the server. Whenever you get to 90% of that
+limit, Exchange sends you an email to let you know that you are close
+to the limit. Since I live so close to the limit, I don't want to be
+notified at 90%. I want to be notified much closer to 100%.</P>
+
+<P>This criteria will grab the amount of space that is currently being
+used and will trigger a match if it is more than 98000.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;ValueCompare&gt;
+    &lt;Header&gt;Body:&lt;/Header&gt;
+    &lt;Regex&gt;Your mailbox size is (\d+) KB\.&lt;/Regex&gt;
+    &lt;Comparison&gt;gt&lt;/Comparison&gt;
+    &lt;Value&gt;98000&lt;/Value&gt;
+  &lt;/ValueCompare&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+<P><B>Note:</B> the example uses a special header called <B>Body:</B>
+that is really the entire body of the email message. You need to
+include the colon since it is a special "header". If there is an email
+with an actual "Body:" header in the headers, you would access it
+without the colon.</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>HeaderExists</Title>
+</HEAD>
+<BODY>
+
+<H3>HeaderExists</H3>
+
+<P>Check to see whether or not the email message contains the
+specified header line.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="HeaderExists" SRC="../../../Images/HeaderExists.gif">
+</P>
+
+<P>The <B>Header</B> tag should contain the name of the header that
+you are testing the existance of. Remember not to include the colon in
+the name of the header.</P>
+
+<H3>HeaderExists Example</H3>
+
+<P>This example will match against an email that doesn't contain a
+<B>To:</B> header. Most legitimate mail servers will generate a To:
+header line but leave it blank when there is nobody on the To:
+line. But some spam programs out there completely remove the To:
+header. I've seen enough spam like this to write a rule for it.</P>
+
+<P>The example also uses the <A HREF="Not.htm">&lt;Not&gt;</A>
+criteria so that we'll match when the header doesn't exist.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;Not&gt;
+    &lt;HeaderExists&gt;
+      &lt;Header&gt;To&lt;/Header&gt;
+    &lt;/HeaderExists&gt;
+  &lt;/Not&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

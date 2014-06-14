@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Uppercase Subject Lines</Title>
+</HEAD>
+<BODY>
+
+<H3>Uppercase Subject Lines</H3>
+
+<P>It isn't as popular a spamming signature as it used to be, but I
+still see the spam come through with the subject line screaming at you
+in all caps. Once again, making use of regular expressions can easily
+take care of this problem. Look for a series of 15 or more uppercase
+letters, numbers, spaces, and other punctuation (like '!' and '$') and
+mark it as a spam message.</P>
+
+<H3>Uppercase Example</H3>
+
+
+<P><PRE>
+&lt;Filter Name="SPAM: Uppercase Subject Line" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;Subject&lt;/Header&gt;
+      &lt;Value&gt;[A-Z0-9\W]{15,}&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+
+</BODY>
+</HTML>

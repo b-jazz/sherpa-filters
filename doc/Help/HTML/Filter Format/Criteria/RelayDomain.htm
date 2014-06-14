@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>RelayDomain</Title>
+</HEAD>
+<BODY>
+
+<H3>RelayDomain</H3>
+
+<P>Checks to see if any of the email servers that handled the email
+belongs to (or doesn't belong to) one of the listed top-level domains.</P> 
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="RelayDomain" SRC="../../../Images/RelayDomain.gif">
+</P>
+
+<P>You can either specify a list of <B>Good</B> domains (a sort of
+whitelist), or a list of <B>Bad</B> domains (a blacklist). The list of
+values are not regular expressions and should include the dot (.) for
+readability.</P>
+
+<H3>RelayDomain Example</H3>
+
+<P>In the example below, we list the major top level domains that send
+out mail. Not a whole lot of spam originates in the UK, so we allow
+them to, and since we have an Au Pair from Poland that sends us mail,
+we include .pl in the list of good domains.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;RelayDomain&gt;
+    &lt;Good&gt;.com&lt;/Good&gt;
+    &lt;Good&gt;.net&lt;/Good&gt;
+    &lt;Good&gt;.edu&lt;/Good&gt;
+    &lt;Good&gt;.gov&lt;/Good&gt;
+    &lt;Good&gt;.org&lt;/Good&gt;
+    &lt;Good&gt;.us&lt;/Good&gt;
+    &lt;Good&gt;.uk&lt;/Good&gt;
+    &lt;Good&gt;.pl&lt;/Good&gt;
+  &lt;/RelayDomain&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+<P>If you don't want to be as strict, you could use the example below
+to list out domains that you know do send a lot of spam. I've seen a
+fair amount of spam from North Korea, Nigeria, and Russia. I'd start
+there and add more top level domains as you see an increase in spam
+from them.</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;RelayDomain&gt;
+    &lt;Bad&gt;.kr&lt;/Bad&gt;
+    &lt;Bad&gt;.ng&lt;/Bad&gt;
+    &lt;Bad&gt;.ru&lt;/Bad&gt;
+  &lt;/RelayDomain&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

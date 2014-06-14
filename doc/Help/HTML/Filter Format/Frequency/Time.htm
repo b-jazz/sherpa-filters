@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>Time</Title>
+</HEAD>
+<BODY>
+
+<H3>Time</H3>
+
+<P>Specify the minimum amount of time before acting on a stream of
+duplicate email messages.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="Not" SRC="../../../Images/Frequency.gif">
+</P>
+
+<P>Just like the <B>Count</B> option in the <B>Frequency</B> setting,
+the <B>Time</B> option will instead wait the specified amount of time
+before acting on a matching email message. This way, you can opt to
+only receive one email message per hour from a failing script.</P>
+
+<P>If you haven't seen your script failure email for a few weeks, and
+then you get twenty of them in a row, the first one will be considered
+a match, and then the next several won't trigger a filter match for
+the specified amount of time. After that amount of time goes by, the
+next message that matches the criteria will trigger a filter match and
+will perform the filter's actions.</P>
+
+<P>It's a good idea to have a pair of filters when using the
+<B>Frequency</B> ability. The first filter will grab the occassional
+match, and the second filter will toss the bulk of the repeat
+messages.</P>
+
+<P>The format of the value you specify is [DDD.]HH:MM:SS. The number
+of days is optional, but the hours, minutes and seconds must be
+specified and must be exactly two digits.</P>
+
+<H3>Time Example</H3>
+
+<P>This is the same example as the <B>Count</B> option, but accepts
+only one message every 59 minutes and 5 seconds.</P>
+
+<P><PRE>
+<FONT COLOR="DARKGRAY">&lt;Filter Name="Count Example"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;Subject&lt;/Header&gt;
+      &lt;Value&gt;^Script Failure: &lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;</FONT>
+  &lt;Frequency&gt;
+    &lt;Time&gt;00:59:05&lt;/Time&gt;
+  &lt;/Frequency&gt;
+<FONT COLOR="DARKGRAY">  &lt;Actions&gt;
+    ...
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    ...
+  &lt;/Stats&gt;
+&lt;/Filter&gt;</FONT>
+</PRE></P>
+
+</BODY>
+</HTML>

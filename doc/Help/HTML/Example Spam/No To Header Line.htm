@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>No To: Header Line</Title>
+</HEAD>
+<BODY>
+
+<H3>No To: Header Line</H3>
+
+<P>It continues to baffle me why spammers don't follow the RFC rules
+on how messages should be formatted. One of the things that spam
+generating software does is fail to include a <B>To:</B> header
+line. Most, if not all, legitimate mailers will include a To: line
+even if there aren't any addresses in the To: line.</P>
+
+<P>The example filter below will see if the header doesn't even exist
+and will filter the message away as spam.</P>
+
+<H3>Example</H3>
+
+<P><PRE>
+&lt;Filter Name="SPAM: No To: Header Line" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;Not&gt;
+      &lt;HeaderExists&gt;
+        &lt;Header&gt;To&lt;/Header&gt;
+      &lt;/HeaderExists&gt;
+    &lt;/Not&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+
+</BODY>
+</HTML>

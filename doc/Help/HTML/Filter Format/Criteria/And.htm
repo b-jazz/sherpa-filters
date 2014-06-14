@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<Title>And</Title>
+</HEAD>
+<BODY>
+
+<H3>And</H3>
+
+<P>Combines two or more criteria. If all the sub-criteria match, then
+the overall criteria triggers a match.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="And" SRC="../../../Images/And.gif">
+</P>
+
+<P></P>
+
+<H3>And Example</H3>
+
+<P>In the example below, Joe's weekly status report will trigger a
+match since the mail is from Joe <I>and</I> the subject line starts
+with "Weekly Report".</P>
+
+<P>
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;And&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;From&lt;/Header&gt;
+      &lt;Value&gt;joe@mycompany.com&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;Subject&lt;/Header&gt;
+      &lt;Value&gt;^Weekly Report&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/And&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+</P>
+
+</BODY>
+</HTML>

@@ -1,0 +1,206 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Sherpa Summary">
+		<param name="Local" value="HTML\Sherpa Summary.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Editing Filters">
+		<param name="Local" value="HTML\Editing Filters.htm">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Getting Started">
+		<param name="Local" value="HTML\Getting Started\Getting Started.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Locate Exchange Server">
+			<param name="Local" value="HTML\Getting Started\Locate Exchange Server.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Move Inbox Contents">
+			<param name="Local" value="HTML\Getting Started\Move Inbox Contents.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Create Spam Samples">
+			<param name="Local" value="HTML\Getting Started\Create Spam Samples.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Sherpa Options">
+		<param name="Local" value="HTML\Sherpa Options\Sherpa Options.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Sherpa Filter Location">
+			<param name="Local" value="HTML\Sherpa Options\Sherpa Filter Location.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Exchange Server">
+			<param name="Local" value="HTML\Sherpa Options\Exchange Server.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="User Name">
+			<param name="Local" value="HTML\Sherpa Options\User Name.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Default Mailbox">
+			<param name="Local" value="HTML\Sherpa Options\Default Mailbox.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Log Actions">
+			<param name="Local" value="HTML\Sherpa Options\Log Actions.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Probe Interval">
+			<param name="Local" value="HTML\Sherpa Options\Probe Interval.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Non-Spam Corpus">
+			<param name="Local" value="HTML\Sherpa Options\Non-Spam Corpus.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Spam Corpus">
+			<param name="Local" value="HTML\Sherpa Options\Spam Corpus.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Filter Format">
+		<param name="Local" value="HTML\Filter Format\Filter Format.htm">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Filter Format Basics">
+			<param name="Local" value="HTML\Filter Format\Filter Format Basics.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Filter Attributes">
+			<param name="Local" value="HTML\Filter Format\Filter Attributes.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Criteria">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="HeaderMatch">
+				<param name="Local" value="HTML\Filter Format\Criteria\HeaderMatch.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="BodyMatch">
+				<param name="Local" value="HTML\Filter Format\Criteria\BodyMatch.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="HeaderExists">
+				<param name="Local" value="HTML\Filter Format\Criteria\HeaderExists.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ValueCompare">
+				<param name="Local" value="HTML\Filter Format\Criteria\ValueCompare.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ContactMatch">
+				<param name="Local" value="HTML\Filter Format\Criteria\ContactMatch.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="RelayDomain">
+				<param name="Local" value="HTML\Filter Format\Criteria\RelayDomain.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Bayes">
+				<param name="Local" value="HTML\Filter Format\Criteria\Bayes.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="And">
+				<param name="Local" value="HTML\Filter Format\Criteria\And.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Or">
+				<param name="Local" value="HTML\Filter Format\Criteria\Or.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Not">
+				<param name="Local" value="HTML\Filter Format\Criteria\Not.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Frequency">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Time">
+				<param name="Local" value="HTML\Filter Format\Frequency\Time.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Count">
+				<param name="Local" value="HTML\Filter Format\Frequency\Count.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Actions">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Move">
+				<param name="Local" value="HTML\Filter Format\Actions\Move.htm">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="ListMove">
+				<param name="Local" value="HTML\Filter Format\Actions\ListMove.htm">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Stats">
+			<param name="Local" value="HTML\Filter Format\Stats.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Example Spam and Filters">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Common Words Found In Spam">
+			<param name="Local" value="HTML\Example Spam\Common Words Found In Spam.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Email From Myself">
+			<param name="Local" value="HTML\Example Spam\Email From Myself.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Foreign Language Spam">
+			<param name="Local" value="HTML\Example Spam\Foreign Language Spam.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Malformed Message-ID Header">
+			<param name="Local" value="HTML\Example Spam\Malformed Message-Id Header.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="No To: Header Line">
+			<param name="Local" value="HTML\Example Spam\No To Header Line.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Spam Through Foreign Email Servers">
+			<param name="Local" value="HTML\Example Spam\Spam Through Foreign Mail Servers.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Uppercase Subject Lines">
+			<param name="Local" value="HTML\Example Spam\Uppercase Subject Lines.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="ADV In The Subject Line">
+			<param name="Local" value="HTML\Example Spam\ADV In The Subject Line.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Habeas Authorized Email">
+			<param name="Local" value="HTML\Example Spam\Habaes Authorized Email.htm">
+			</OBJECT>
+	</UL>
+</UL>
+</BODY></HTML>

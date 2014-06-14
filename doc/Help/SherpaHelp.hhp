@@ -1,0 +1,59 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=SherpaHelp.chm
+Contents file=Table of Contents.hhc
+Default Font=Verdana,8,0
+Default Window=Sherpa Filters Help
+Default topic=HTML\Sherpa Summary.htm
+Display compile progress=No
+Full-text search=Yes
+Language=0x409 English (United States)
+
+[WINDOWS]
+Sherpa Filters Help="Sherpa Filters Help","Table of Contents.hhc",,"HTML\Sherpa Summary.htm",,,,,,0x22520,,0x180c,[150,75,850,675],,,,,,,0
+
+
+[FILES]
+HTML\Getting Started\Getting Started.htm
+HTML\Getting Started\Locate Exchange Server.htm
+HTML\Sherpa Summary.htm
+HTML\Filter Format\Criteria\And.htm
+HTML\Filter Format\Criteria\Bayes.htm
+HTML\Filter Format\Criteria\BodyMatch.htm
+HTML\Filter Format\Criteria\ContactMatch.htm
+HTML\Filter Format\Criteria\HeaderExists.htm
+HTML\Filter Format\Criteria\HeaderMatch.htm
+HTML\Filter Format\Criteria\Not.htm
+HTML\Filter Format\Criteria\Or.htm
+HTML\Filter Format\Criteria\RelayDomain.htm
+HTML\Filter Format\Criteria\ValueCompare.htm
+HTML\Filter Format\Actions\Move.htm
+HTML\Filter Format\Filter Attributes.htm
+HTML\Filter Format\Filter Format Basics.htm
+HTML\Sherpa Options\Log Actions.htm
+HTML\Sherpa Options\Non-Spam Corpus.htm
+HTML\Sherpa Options\Probe Interval.htm
+HTML\Sherpa Options\Sherpa Filter Location.htm
+HTML\Sherpa Options\Spam Corpus.htm
+HTML\Sherpa Options\User Name.htm
+HTML\Sherpa Options\Default Mailbox.htm
+HTML\Sherpa Options\Exchange Server.htm
+HTML\Example Spam\Common Words Found In Spam.htm
+HTML\Example Spam\Email From Myself.htm
+HTML\Example Spam\Foreign Language Spam.htm
+HTML\Example Spam\Habaes Authorized Email.htm
+HTML\Example Spam\Malformed Message-Id Header.htm
+HTML\Example Spam\No To Header Line.htm
+HTML\Example Spam\Spam Through Foreign Mail Servers.htm
+HTML\Example Spam\Uppercase Subject Lines.htm
+HTML\Sherpa Options\Sherpa Options.htm
+HTML\Filter Format\Actions\ListMove.htm
+HTML\Editing Filters.htm
+HTML\Filter Format\Stats.htm
+HTML\Filter Format\Filter Format.htm
+HTML\Example Spam\ADV In The Subject Line.htm
+HTML\Filter Format\Frequency\Count.htm
+HTML\Filter Format\Frequency\Time.htm
+
+[INFOTYPES]
+

@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Foreign Language Spam</Title>
+</HEAD>
+<BODY>
+
+<H3>Foreign Language Spam</H3>
+
+<P>I see a fair amount of spam coming with either Chinese or Japanese
+characters in it. I notice that these emails have some encoding in the
+Subject line that looks like it escapse some character values with an
+equals sign. Anyway, there are a lot more equal signs than one would
+normally see in any other message. This filter will look subject lines
+that have an '=', some more characters, another '=', more characters,
+etc. There are several more ways to write this regular expression and
+to tighten it down, but this has done the trick for me.</P>
+
+<H3>Example</H3>
+
+<P><PRE>
+&lt;Filter Name="SPAM: Foreign Language Spam" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;HeaderMatch&gt;
+      &lt;Header&gt;From&lt;/Header&gt;
+      &lt;Value&gt;.*=.*=.*=.*=.*=.*=&lt;/Value&gt;
+    &lt;/HeaderMatch&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+</BODY>
+</HTML>

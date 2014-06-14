@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../style.css" TYPE="text/css">
+<Title>Email From Myself</Title>
+</HEAD>
+<BODY>
+
+<H3>Email From Myself</H3>
+
+<P>This has got to be one of the more annoying kinds of spam for me. I
+have a nice little filter set up to consider anything from someone in
+my Contacts to be a valid email. But of course, since I have a record
+for myself in there, mail from spammers that forge my own address as
+the sender of the message get through.</P>
+
+<P>There are a couple different ways to deal with this. For starters,
+you could remove yourself from your Contacts. But I didn't want to do
+that, so I wrote a rule to look for some tell-tale signs that the
+message really wasn't from me.</P>
+
+<P>I know a couple of facts about my email situation. The first is
+that all spam comes from the outside world through a well known
+gateway mail server that stamps its hostname on all incoming
+message. The second thing I know is that no email from myself and to
+myself would go through that same gateway. So my rule is simple, look
+for emails From my address that have that gateway hostname in the
+Received headers.</P>
+
+<H3>Example</H3>
+
+<P><PRE>
+&lt;Filter Name="SPAM: Forged Email From Myself" Enabled="true" Tag="Spam"&gt;
+  &lt;Criteria&gt;
+    &lt;And&gt;
+      &lt;HeaderMatch&gt;
+        &lt;Header&gt;From&lt;/Header&gt;
+        &lt;Value&gt;myself@company.com&lt;/Value&gt;
+      &lt;/HeaderMatch&gt;
+      &lt;HeaderMatch&gt;
+        &lt;Header&gt;Received&lt;/Header&gt;
+        &lt;Value&gt;mail-gateway.company.com&lt;/Value&gt;
+      &lt;/HeaderMatch&gt;
+    &lt;/And&gt;
+  &lt;/Criteria&gt;
+  &lt;Actions&gt;
+    &lt;Move&gt;
+      &lt;Destination&gt;Mailboxes/Spam&lt;/Destination&gt;
+    &lt;/Move&gt;
+  &lt;/Actions&gt;
+  &lt;Stats&gt;
+    &lt;TestCounter&gt;0&lt;/TestCounter&gt;
+    &lt;MatchCounter&gt;0&lt;/MatchCounter&gt;
+    &lt;FilterTime&gt;0&lt;/FilterTime&gt;
+    &lt;LastMatchTime&gt;&lt;/LastMatchTime&gt;
+  &lt;/Stats&gt;
+&lt;/Filter&gt;
+</PRE></P>
+
+</BODY>
+</HTML>

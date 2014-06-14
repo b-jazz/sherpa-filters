@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<META name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<LINK REL=stylesheet HREF="../../style.css" TYPE="text/css">
+<TITLE>BodyMatch</TITLE>
+</HEAD>
+<BODY>
+
+<H3>BodyMatch</H3>
+
+<P>Matches text in the body of the email message. Even more useful when used
+with regular expressions.</P>
+
+<P>
+  <IMG ALIGN=MIDDLE ALT="BodyMatch" SRC="../../../Images/BodyMatch.gif">
+</P>
+
+<P>You can have as many <B>Value</B> tags as you'd like. The criteria
+will <B>Or</B> the values together so that if any of values show up in
+an email, the criteria will consider the message a match.</P>
+
+<H3>BodyMatch Example</H3>
+
+<P>After you've filtered away all of your business email and mail from
+friends, you might want to use the example below to filter out some
+words that are very common to spam.</P>
+
+<PRE>
+<FONT COLOR="DARKGRAY">&lt;Criteria&gt;</FONT>
+  &lt;BodyMatch&gt;
+    &lt;Value&gt;Unsubscribe&lt;/Value&gt;
+    &lt;Value&gt;Special Offer&lt;/Value&gt;
+  &lt;/BodyMatch&gt;
+<FONT COLOR="DARKGRAY">&lt;/Criteria&gt;</FONT>
+</PRE>
+
+<P>Be careful though, there is a chance that you could throw away some
+legitimate email with the rule above. You might want to consider using
+the <A HREF="Bayes.htm">Bayes</A> filter instead.
+
+</BODY>
+</HTML>

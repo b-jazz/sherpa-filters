@@ -1,0 +1,101 @@
+
++------------+
+| 2002.09.30 |
++------------+
+
+* Finished up enough work to get a beta build out there.
+
+* Bayes filters are implemented and do a pretty good job.
+
+* Added the compiled help to the application.
+
+* Updated all of the source files with the GPL comments at the top.
+
+* Put a form in the application to display the GPL.
+
++------------+
+| 2002.09.25 |
++------------+
+
+* Created a bunch of empty files as an outline for the help topics. A
+  couple of the summary files do have some information in them, but
+  nowhere near enough to get started using Sherpa if you are a
+  novice. More help file content on the way soon.
+
++------------+
+| 2002.09.17 |
++------------+
+
+ * Converted the email messages hash of headers to be a little bit
+   more standardized by making the "Received" collection of header
+   lines be a plain old string, and made a special key of "Received:"
+   (note the colon) that is a list of Received lines. This will make a
+   HeaderMatch against the Received lines possible.
+
+ * The rest is mostly just to keep my changes offsite somewhere. This
+   set of changes is mostly to support some Bayes Filters feature that
+   I discovered at http://www.paulgraham.com/spam.html. Until I get to
+   a feature complete state and can write some documentation, you'll
+   have to email for help or "use the source, Luke" as documentation.
+
++------------+
+| 2002.09.01 |
++------------+
+
+ * Added some more logging of errors (if the user has the logging
+   feature turned on.)
+
+ * Wrote the basic code to handle editing the filter file from within
+   the application so that you don't have to quit Sherpa, edit the
+   filter, and then restart Sherpa. There are still some bugs here,
+   but it is a good start.
+
+ * Figured out the simple way to bring up Sherpa showing the Options
+   panel when the user hasn't configured the options yet.
+
++------------+
+| 2002.08.14 |
++------------+
+
+ * Fixed 594339: very first run of Sherpa would crash when you tried
+   to save your preferences because it tried to abort a thread that
+   was never started.
+
+ * Fixed 595082: changing the poll reset the counters.
+
+ * Fixed 595153: timer and stats weren't updated when there was no
+   email to filter.
+
+ * Implemented 593691: Sherpa now logs to its very own log file in
+   EventViewer so that it doesn't clog up the application log.
+
+ * Implemented 594160: Sherpa showed the spam/day count, but didn't
+   show how much normal mail (non-spam) was received per day.
+
+ * Added an option to turn on/off logging of events and errors to
+   EventViewer.
+
+ * Added an installer project so that an installation package would be
+   generated and you can run Sherpa outside of the development
+   environment.
+
++------------+
+| 2002.08.11 |
++------------+
+ 
+ * Functionaly equivalent to the version that was written in Visual
+   Basic.
+
+ * Logs to EventViewer instead of a 32K text field.
+
+ * Verifies the filters file against a Schema instead of a DTD.
+
+ * Starts to abstract the data provider functionality into an abstract
+   class so that we can have a MAPI, POP3, and/or IMAP provider
+   class. We'll see.
+
+ * Displays some simple counts of how much spam vs. real mail is being
+   received and what kind of percentage of spam you're seeing.
+
+ * Calculates how much spam per day you get.
+

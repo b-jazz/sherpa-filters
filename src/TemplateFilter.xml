@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Filters Version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="file:///C:/Program Files/IH8SPAM/Sherpa Filters/SherpaFilterSchema.xsd">
+
+  <Filter Name="TEMPLATE: TEMPLATE" Enabled="false">
+    <!-- This filter is just a template. As you can see it is not enabled.
+    Start by copying this filter to make sure you get a good copy of the 
+    order of tags. -->
+    <Criteria>
+      <HeaderMatch>
+        <Header>X-Sample-Header</Header>
+        <Value>SampleValue</Value>
+      </HeaderMatch>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Deleted Items</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+
+  <Filter Name="ALL: Move all remaining messages" Enabled="false">
+    <!-- Your very last rule should move all remaining messages into your
+    standard mailbox (I use Mailboxes/In). If you don't have this rule,
+    Sherpa will keep filtering the same messages over and over that
+    are in your Inbox and will slow performance down (along with
+    pounding your Exchange server). -->
+    <!-- If you are ready to do this, make sure you Enable this rule. -->
+    <Criteria>
+      <All></All>
+    </Criteria>
+    <Actions>
+      <Move>
+        <Destination>Mailboxes/In</Destination>
+      </Move>
+    </Actions>
+    <Stats>
+      <TestCounter>0</TestCounter>
+      <MatchCounter>0</MatchCounter>
+      <FilterTime>0</FilterTime>
+      <LastMatchTime></LastMatchTime>
+    </Stats>
+  </Filter>
+
+</Filters>
